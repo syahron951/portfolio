@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SpaceBackground from "@/components/Spacebackground";
+import SpaceBackground from "@/components/SpaceBackground";
 import RocketIntro from "@/components/RocketIntro";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
