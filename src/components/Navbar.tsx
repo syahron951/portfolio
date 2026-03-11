@@ -339,7 +339,7 @@ export default function Navbar() {
                         <span style={{
                             fontFamily:"Orbitron,monospace", fontWeight:700, fontSize:"0.95rem",
                             letterSpacing:"0.15em", color:"var(--text-primary)",
-                        }}>M.ABDULLAH SYAHRONI</span>
+                        }}>Syahr</span>
                     </Link>
 
                     {/* Desktop links */}
