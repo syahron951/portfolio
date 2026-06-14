@@ -34,10 +34,12 @@ src/
 
 ## ⚠️ Human TODOs (do not auto-fill — must be truthful)
 
-Phase 0 intentionally left real content blank rather than fabricate it:
+Real content is added only when verifiable; the rest is flagged, not invented:
 
-- [ ] `src/data/projects.ts` — write the real **Lumero.id** description, tech
-      list, and verify the links resolve.
+- [x] **Lumero** description + live link — added (real, owner-provided).
+- [ ] `src/data/projects.ts` — add Lumero's real **tech stack** (not provided yet).
+- [ ] `LUMERO_CASE_STUDY.md` — complete the sections marked **`NEEDS YOUR INPUT`**
+      (technical decisions, architecture, challenges, outcomes, learnings).
 - [ ] `src/app/about/page.tsx` — confirm the skills list reflects what you
       actually use.
 
