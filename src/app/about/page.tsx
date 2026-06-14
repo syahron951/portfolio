@@ -4,56 +4,22 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useApp } from "@/context/Appcontext";
 
-const skills = {
-    Frontend: [
-        { name: "React / Next.js", level: 95 },
-        { name: "TypeScript",      level: 90 },
-        { name: "TailwindCSS",     level: 92 },
-        { name: "Framer Motion",   level: 80 },
-    ],
-    Backend: [
-        { name: "Node.js / Express", level: 90 },
-        { name: "MongoDB",           level: 85 },
-        { name: "PostgreSQL",        level: 80 },
-        { name: "Redis",             level: 75 },
-    ],
-    Tools: [
-        { name: "Git / GitHub", level: 95 },
-        { name: "Docker",       level: 75 },
-        { name: "Vercel / AWS", level: 85 },
-        { name: "Linux / CLI",  level: 80 },
-    ],
+// Technology names only — the fabricated proficiency percentages were removed.
+// TODO(human): confirm this list reflects what you actually use; edit freely.
+const skills: Record<string, string[]> = {
+    Frontend: ["React / Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+    Backend:  ["Node.js / Express", "MongoDB", "PostgreSQL", "Redis"],
+    Tools:    ["Git / GitHub", "Docker", "Vercel / AWS", "Linux / CLI"],
 };
 
 const catColors: Record<string, string> = { Frontend: "var(--cyan)", Backend: "var(--purple)", Tools: "var(--pink)" };
 
-function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
-    return (
-        <motion.div className="skill-row"
-                    initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }} transition={{ duration: 0.4, delay }}>
-            <div className="skill-row-header">
-                <span className="skill-name">{name}</span>
-                <span className="skill-pct">{level}%</span>
-            </div>
-            <div className="skill-track">
-                <motion.div className="skill-fill"
-                            initial={{ width: 0 }} whileInView={{ width: `${level}%` }}
-                            viewport={{ once: true }} transition={{ duration: 1, delay: delay + 0.2, ease: "easeOut" }} />
-            </div>
-        </motion.div>
-    );
-}
-
 export default function AboutPage() {
     const { t } = useApp();
-    const tlKeys = ["tl.1", "tl.2", "tl.3", "tl.4"];
-    const years = ["2024", "2022", "2021", "2020"];
     const [photoError, setPhotoError] = useState(false);
 
     const infoGrid = [
         { labelKey: "about.location", value: "Indonesia 🇮🇩" },
-        { labelKey: "about.exp",      value: "3+ " + t("about.exp") },
         { labelKey: "about.focus",    value: t("about.focus.v") },
         { labelKey: "about.status",   value: t("about.status.v") },
     ];
@@ -144,38 +110,12 @@ export default function AboutPage() {
                     <div className="grid-3">
                         {Object.entries(skills).map(([cat, items]) => (
                             <div key={cat} style={{ padding: "24px 26px", borderRadius: 12, background: "var(--surface)", border: "1px solid var(--border)", backdropFilter: "blur(12px)" }}>
-                                <h3 style={{ fontFamily: "Orbitron, monospace", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: catColors[cat], marginBottom: 20 }}>{cat}</h3>
-                                {items.map((s, si) => <SkillBar key={s.name} name={s.name} level={s.level} delay={si * 0.08} />)}
+                                <h3 style={{ fontFamily: "Orbitron, monospace", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: catColors[cat], marginBottom: 18 }}>{cat}</h3>
+                                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                                    {items.map(name => <span key={name} className="tag">{name}</span>)}
+                                </div>
                             </div>
                         ))}
-                    </div>
-                </motion.div>
-
-                {/* Timeline */}
-                <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                    <div className="section-header">
-                        <span className="section-label">{t("about.exp.label")}</span>
-                        <h2 className="section-title">{t("about.exp.title")} <span style={{ color: "var(--purple)" }}>{t("about.timeline")}</span></h2>
-                        <div className="section-divider purple" />
-                    </div>
-                    <div style={{ position: "relative", maxWidth: 780, margin: "0 auto" }}>
-                        <div style={{ position: "absolute", left: 20, top: 0, bottom: 0, width: 1, background: "linear-gradient(to bottom, transparent, var(--cyan), var(--purple), transparent)" }} />
-                        <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingLeft: 56 }}>
-                            {tlKeys.map((k, i) => (
-                                <motion.div key={k}
-                                            initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                                            style={{ position: "relative" }}>
-                                    <div style={{ position: "absolute", left: -44, top: 18, width: 10, height: 10, borderRadius: "50%", background: "var(--cyan)", boxShadow: "0 0 12px var(--cyan)" }} />
-                                    <div style={{ padding: "20px 24px", borderRadius: 10, background: "var(--surface)", border: "1px solid var(--border)" }}>
-                                        <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "0.7rem", color: "var(--cyan)", marginBottom: 4 }}>{years[i]}</div>
-                                        <div style={{ fontFamily: "Orbitron, monospace", fontSize: "0.8rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: 3 }}>{t(`${k}.title`)}</div>
-                                        <div style={{ fontFamily: "Exo 2, sans-serif", fontSize: "0.78rem", color: "var(--purple)", marginBottom: 8 }}>{t(`${k}.company`)}</div>
-                                        <p className="body-text" style={{ fontSize: "0.82rem" }}>{t(`${k}.desc`)}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
                 </motion.div>
 

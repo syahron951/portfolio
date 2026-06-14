@@ -91,21 +91,6 @@ export default function Hero() {
                                 <a href="/projects" className="btn-primary">{t("hero.cta.projects")}</a>
                                 <a href="/about" className="btn-outline">{t("hero.cta.about")}</a>
                             </motion.div>
-
-                            {/* Stats */}
-                            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}
-                                        style={{ display: "flex", gap: 36, justifyContent: "inherit" }}>
-                                {[
-                                    { value: "3+", key: "hero.years" },
-                                    { value: "20+", key: "hero.projects" },
-                                    { value: "10+", key: "hero.tech" },
-                                ].map(s => (
-                                    <div key={s.key}>
-                                        <div style={{ fontFamily: "Orbitron, monospace", fontSize: "1.7rem", fontWeight: 900, color: "var(--cyan)" }}>{s.value}</div>
-                                        <div style={{ fontFamily: "Exo 2, sans-serif", fontSize: "0.66rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--text-muted)", marginTop: 3 }}>{t(s.key)}</div>
-                                    </div>
-                                ))}
-                            </motion.div>
                         </div>
 
                         {/* Avatar with photo */}

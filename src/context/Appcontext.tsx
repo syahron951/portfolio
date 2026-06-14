@@ -26,9 +26,6 @@ const translations: Record<string, Record<Lang, string>> = {
     "hero.desc":          { en: "I believe that learning is a lifelong journey, and every challenge is an opportunity to grow and become better.", id: "Saya percaya bahwa proses belajar tidak pernah selesai, dan setiap tantangan adalah kesempatan untuk tumbuh menjadi lebih baik." },
     "hero.cta.projects":  { en: "View Projects",               id: "Lihat Proyek" },
     "hero.cta.about":     { en: "About Me",                    id: "Tentang Saya" },
-    "hero.years":         { en: "Years Exp",                   id: "Thn Pengalaman" },
-    "hero.projects":      { en: "Projects",                    id: "Proyek" },
-    "hero.tech":          { en: "Technologies",                id: "Teknologi" },
 
     // About page
     "about.label":    { en: "Who I Am",       id: "Siapa Saya" },
@@ -38,30 +35,12 @@ const translations: Record<string, Record<Lang, string>> = {
     "about.bio2":     { en: "I enjoy the process of learning, experimenting with new things, and solving problems through technology.", id: "Saya menikmati proses belajar, bereksperimen dengan hal baru, dan memecahkan masalah melalui teknologi." },
     "about.bio3":     { en: "For me, every project is an opportunity to learn something new and grow further.", id: "Bagi saya, setiap project adalah kesempatan untuk belajar sesuatu yang baru dan berkembang lebih jauh." },
     "about.location": { en: "Location",       id: "Lokasi" },
-    "about.exp":      { en: "Experience",     id: "Pengalaman" },
     "about.focus":    { en: "Focus",          id: "Fokus" },
     "about.status":   { en: "Status",         id: "Status" },
-    "about.status.v": { en: "Student ✓",      id: "Pelajar ✓" },
+    "about.status.v": { en: "Student",        id: "Pelajar" },
     "about.focus.v":  { en: "Fullstack Web",  id: "Fullstack Web" },
     "about.tech.label": { en: "Technologies", id: "Teknologi" },
     "about.tech.title": { en: "TECH",         id: "TECH" },
-    "about.exp.label":  { en: "Experience",   id: "Pengalaman" },
-    "about.exp.title":  { en: "EXPERIENCE",   id: "PENGALAMAN" },
-    "about.timeline": { en: "TIMELINE",       id: "LINIMASA" },
-
-    // Timeline
-    "tl.1.title":   { en: "Senior Fullstack Developer", id: "Senior Fullstack Developer" },
-    "tl.1.company": { en: "Tech Startup, Jakarta",       id: "Tech Startup, Jakarta" },
-    "tl.1.desc":    { en: "Leading development of scalable SaaS products serving 50k+ users.", id: "Memimpin pengembangan produk SaaS scalable yang melayani 50k+ pengguna." },
-    "tl.2.title":   { en: "Fullstack Developer",         id: "Fullstack Developer" },
-    "tl.2.company": { en: "Digital Agency, Surabaya",    id: "Digital Agency, Surabaya" },
-    "tl.2.desc":    { en: "Built web applications for enterprise clients across e-commerce and fintech.", id: "Membangun aplikasi web untuk klien enterprise di bidang e-commerce dan fintech." },
-    "tl.3.title":   { en: "Frontend Developer",          id: "Frontend Developer" },
-    "tl.3.company": { en: "Remote · Freelance",          id: "Remote · Freelance" },
-    "tl.3.desc":    { en: "Delivered 15+ projects for clients globally, specializing in React and modern UI.", id: "Menyelesaikan 15+ proyek untuk klien global, spesialisasi React dan UI modern." },
-    "tl.4.title":   { en: "Started Coding Journey",      id: "Mulai Perjalanan Coding" },
-    "tl.4.company": { en: "Self-taught",                 id: "Otodidak" },
-    "tl.4.desc":    { en: "Began learning web development through online courses and personal projects.", id: "Mulai belajar web development melalui kursus online dan proyek pribadi." },
 
     // Projects
     "proj.label":   { en: "My Work",         id: "Karya Saya" },
