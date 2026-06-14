@@ -1,31 +1,27 @@
 import { Project } from "@/types/project";
-import { site } from "@/config/site";
 
 // ─────────────────────────────────────────────────────────────────────────
 // REAL PROJECTS ONLY.
-// The six previous entries (Nebula Commerce, Orbit Chat, Stellar CMS, etc.)
-// were fabricated and pointed at https://demo.example.com — removed entirely.
+// The six previous entries were fabricated and pointed at demo.example.com —
+// removed in Phase 0.
 //
-// Lumero.id is the one real, known project. Its narrative content is left as
-// an explicit TODO: it must be written truthfully by a human, not invented.
-// Do NOT auto-fill description/tech/links with guesses.
+// Lumero is the first real "charted world" (see LUMERO_CASE_STUDY.md).
+// Everything below is from owner-provided, verifiable information.
+//
+// NOTE(human): the `tech` stack was not provided yet — left empty rather than
+// guessed. Fill in the actual technologies used for the website and ERP.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const projects: Project[] = [
   {
     id: "lumero",
-    title: "Lumero.id",
-    // TODO(human): replace with a real, specific description —
-    // what Lumero.id is, the problem it solves, and your role in building it.
+    title: "Lumero",
     description:
-      "TODO — add a real description of Lumero.id: what it is, the problem it solves, and your role.",
-    // TODO(human): list the actual technologies used.
+      "A real food & beverage platform for Lumero — a Korean Potato Mozzarella Bread business operating across multiple locations. I build and maintain the website (brand presence, customer information, membership acquisition, store discovery, marketing) and help develop and customize the open-source-based F&B ERP behind day-to-day operations.",
+    // TODO(human): add the real technologies used (website + ERP).
     tech: [],
     emoji: "🌐",
-    // TODO(human): verify this resolves before publishing.
     demo: "https://lumero.id",
-    // TODO(human): link the specific repository if public; otherwise remove.
-    github: site.socials.github,
     status: "live",
     featured: true,
   },
