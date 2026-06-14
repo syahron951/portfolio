@@ -54,7 +54,6 @@ export default function Footer() {
         { href:"/",         label:t("nav.home") },
         { href:"/about",    label:t("nav.about") },
         { href:"/projects", label:t("nav.projects") },
-        { href:"/blog",     label:t("nav.blog") },
     ];
 
     return (

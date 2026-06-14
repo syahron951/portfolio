@@ -18,7 +18,6 @@ const translations: Record<string, Record<Lang, string>> = {
     "nav.home":     { en: "Home",     id: "Beranda" },
     "nav.about":    { en: "About",    id: "Tentang" },
     "nav.projects": { en: "Projects", id: "Proyek" },
-    "nav.blog":     { en: "Blog",     id: "Blog" },
     "nav.contact":  { en: "Contact",  id: "Kontak" },
 
     // Hero
@@ -73,17 +72,6 @@ const translations: Record<string, Record<Lang, string>> = {
     "proj.cta":     { en: "Want to see more? Check out my GitHub profile.", id: "Ingin lihat lebih banyak? Kunjungi profil GitHub saya." },
     "proj.github.btn": { en: "View GitHub Profile →", id: "Lihat Profil GitHub →" },
     "proj.filter.all": { en: "All",          id: "Semua" },
-
-    // Blog
-    "blog.label":   { en: "Thoughts & Tutorials", id: "Pemikiran & Tutorial" },
-    "blog.title":   { en: "BLOG",            id: "BLOG" },
-    "blog.desc":    { en: "Articles about web development, software engineering, and the technologies I work with every day.", id: "Artikel tentang pengembangan web, software engineering, dan teknologi yang saya gunakan setiap hari." },
-    "blog.featured": { en: "Featured",       id: "Unggulan" },
-    "blog.newsletter.title": { en: "STAY",   id: "TETAP" },
-    "blog.newsletter.accent": { en: "UPDATED", id: "UPDATE" },
-    "blog.newsletter.desc": { en: "Get notified when I publish new articles. No spam, ever.", id: "Dapatkan notifikasi saat saya menerbitkan artikel baru. Tanpa spam." },
-    "blog.subscribe": { en: "Subscribe",     id: "Langganan" },
-    "blog.email.placeholder": { en: "your@email.com", id: "email@anda.com" },
 
     // Footer
     "footer.role":  { en: "Fullstack Developer · Software Engineer", id: "Fullstack Developer · Software Engineer" },

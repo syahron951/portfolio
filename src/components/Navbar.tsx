@@ -283,7 +283,6 @@ export default function Navbar() {
         { href:"/",         label:t("nav.home") },
         { href:"/about",    label:t("nav.about") },
         { href:"/projects", label:t("nav.projects") },
-        { href:"/blog",     label:t("nav.blog") },
     ];
 
     // Both themes: always a dark navy nav background
