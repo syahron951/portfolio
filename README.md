@@ -4,8 +4,9 @@ Personal portfolio. Built with Next.js (App Router), React, TypeScript, Tailwind
 
 This repository is being rebuilt per the strategy/production documents in the
 project root (`ODYSSEY_VISION.md`, `ODYSSEY_PRODUCTION_BIBLE.md`, etc.).
-**Current stage: Phase 0 — Foundation & Content (complete).** The cinematic
-experience (Phase 1+) is not built yet.
+**Current stage: Phase 1 — The Briefing (MVP), shipped.** It is a single-scroll,
+server-rendered, dark, English-only narrative. The cinematic V2/V3 layers
+(scroll-driven scenes, parallax, sound, i18n, 3D) are intentionally not built.
 
 ## Getting started
 
@@ -19,12 +20,14 @@ pnpm build    # production build
 
 ```
 src/
-  app/                  # routes: / (Hero), /about, /projects
-  components/           # Navbar, Footer, Hero, SpaceBackground, …
-  config/site.ts        # ← canonical identity (name, email, socials). Edit here.
-  context/Appcontext.tsx# theme + EN/ID language + translation dictionary
-  data/projects.ts      # real projects only
-  types/project.ts      # canonical Project type
+  app/                    # single route: / (the full scroll) + layout
+  components/
+    sections/             # Hero, About, Work (Lumero), Vision, Contact
+    Navbar.tsx Footer.tsx SpaceBackground.tsx Reveal.tsx Container.tsx
+  config/site.ts          # ← canonical identity (name, email, socials). Edit here.
+  lib/fonts.ts            # next/font (Space Grotesk / Inter / JetBrains Mono)
+  data/projects.ts        # real projects only
+  types/project.ts        # canonical Project type
 ```
 
 ## Editing identity & content
