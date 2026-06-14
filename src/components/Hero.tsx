@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useApp } from "@/context/Appcontext";
+import { site } from "@/config/site";
 
 export default function Hero() {
     const { t, lang } = useApp();
-    const rolesEn = ["Fullstack Developer", "Software Engineer"];
-    const rolesId = ["Fullstack Developer", "Software Engineer"];
-    const roles = lang === "en" ? rolesEn : rolesId;
+    const roles = [...site.roles];
 
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayed, setDisplayed] = useState("");
@@ -70,7 +69,7 @@ export default function Hero() {
 
                             <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }}
                                        style={{ fontFamily: "Orbitron, monospace", fontSize: "clamp(2.4rem, 7vw, 5rem)", fontWeight: 900, lineHeight: 1.05, marginBottom: 16 }}>
-                                <span className="shimmer-text">SYAHRONI</span>
+                                <span className="shimmer-text">{site.name.toUpperCase()}</span>
                             </motion.h1>
 
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
@@ -120,7 +119,7 @@ export default function Hero() {
                                 {!photoError ? (
                                     <img
                                         src="/logo.png"
-                                        alt="Syahroni"
+                                        alt={site.name}
                                         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
                                         onError={() => setPhotoError(true)}
                                     />

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useApp } from "@/context/Appcontext";
+import { site } from "@/config/site";
 
 // Technology names only — the fabricated proficiency percentages were removed.
 // TODO(human): confirm this list reflects what you actually use; edit freely.
@@ -68,7 +69,7 @@ export default function AboutPage() {
                                     {!photoError ? (
                                         <img
                                             src="/logo.png"
-                                            alt="Syahroni"
+                                            alt={site.name}
                                             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
                                             onError={() => setPhotoError(true)}
                                         />
@@ -81,7 +82,7 @@ export default function AboutPage() {
 
                         {/* Text */}
                         <motion.div initial={{ opacity: 0, x: 32 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.7 }}>
-                            <h2 style={{ fontFamily: "Orbitron, monospace", fontSize: "1.6rem", fontWeight: 900, color: "var(--text-primary)", marginBottom: 4 }}>Syahroni</h2>
+                            <h2 style={{ fontFamily: "Orbitron, monospace", fontSize: "1.6rem", fontWeight: 900, color: "var(--text-primary)", marginBottom: 4 }}>{site.name}</h2>
                             <p style={{ fontFamily: "Exo 2, sans-serif", fontSize: "0.82rem", letterSpacing: "0.2em", color: "var(--cyan)", marginBottom: 20 }}>{t("about.role")}</p>
                             <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
                                 {["about.bio1", "about.bio2", "about.bio3"].map(k => (

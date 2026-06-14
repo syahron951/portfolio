@@ -54,7 +54,6 @@ const translations: Record<string, Record<Lang, string>> = {
 
     // Footer
     "footer.role":  { en: "Fullstack Developer · Software Engineer", id: "Fullstack Developer · Software Engineer" },
-    "footer.copy":  { en: "© 2024 Syahroni · Built with Next.js + TailwindCSS · Deployed on Vercel", id: "© 2024 Syahroni · Dibangun dengan Next.js + TailwindCSS · Deploy di Vercel" },
 };
 
 const AppContext = createContext<AppContextType>({

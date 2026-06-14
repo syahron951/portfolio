@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useApp } from "@/context/Appcontext";
+import { site } from "@/config/site";
 
 /* SVG icon with optional image override */
 function SocialIcon({ imgPath, label, svgIcon }: {
@@ -42,9 +43,9 @@ const IG = (
 );
 
 const SOCIALS = [
-    { label:"GitHub",    href:"https://github.com/syahroni111",      img:"/socials/github.png",    icon:GH },
-    { label:"LinkedIn",  href:"https://www.linkedin.com/in/syahronii/", img:"/socials/linkedin.png",  icon:LI },
-    { label:"Instagram", href:"https://www.instagram.com/m.a_syahroni/",   img:"/socials/instagram.png", icon:IG },
+    { label:"GitHub",    href:site.socials.github,    img:"/socials/github.png",    icon:GH },
+    { label:"LinkedIn",  href:site.socials.linkedin,  img:"/socials/linkedin.png",  icon:LI },
+    { label:"Instagram", href:site.socials.instagram, img:"/socials/instagram.png", icon:IG },
 ];
 
 export default function Footer() {
@@ -87,7 +88,7 @@ export default function Footer() {
                             fontFamily:"Orbitron,monospace", fontWeight:900,
                             fontSize:"1.1rem", letterSpacing:"0.15em",
                             color:"var(--cyan)", marginBottom:3,
-                        }}>M.ABDULLAH SYAHRONI</div>
+                        }}>{site.name.toUpperCase()}</div>
                         <p style={{
                             fontFamily:"Exo 2,sans-serif", fontSize:"0.68rem",
                             letterSpacing:"0.18em", color:"var(--text-muted)",
@@ -151,7 +152,7 @@ export default function Footer() {
                     fontFamily:"JetBrains Mono,monospace", fontSize:"0.6rem",
                     color:"var(--text-muted)", textAlign:"center",
                 }}>
-                    {t("footer.copy")}
+                    © {new Date().getFullYear()} {site.name} · Built with Next.js &amp; TailwindCSS
                 </p>
 
             </div>
