@@ -271,8 +271,7 @@ export default function Navbar() {
     const [scrolled,     setScrolled]     = useState(false);
     const [menuOpen,     setMenuOpen]     = useState(false);
     const [contactOpen,  setContactOpen]  = useState(false);
-    const { theme, t, lang } = useApp();
-    const isDark = theme === "dark";
+    const { t, lang } = useApp();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
