@@ -1,0 +1,41 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import type { ReactNode } from "react";
+
+/**
+ * The single, restrained entrance animation for The Briefing.
+ * Opacity + a small rise, once, on scroll-in. Fully disabled when the user
+ * prefers reduced motion (renders a plain, static element).
+ */
+export default function Reveal({
+    children,
+    delay = 0,
+    as = "div",
+    className,
+}: {
+    children: ReactNode;
+    delay?: number;
+    as?: "div" | "span" | "li";
+    className?: string;
+}) {
+    const reduce = useReducedMotion();
+    const MotionTag = motion[as];
+
+    if (reduce) {
+        const Tag = as;
+        return <Tag className={className}>{children}</Tag>;
+    }
+
+    return (
+        <MotionTag
+            className={className}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+        >
+            {children}
+        </MotionTag>
+    );
+}
