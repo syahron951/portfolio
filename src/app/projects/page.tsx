@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { projects } from "@/data/projects";
+import { site } from "@/config/site";
 import { useApp } from "@/context/Appcontext";
 
 export default function ProjectsPage() {
@@ -100,7 +101,7 @@ export default function ProjectsPage() {
                 {/* CTA */}
                 <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: "center" }}>
                     <p className="body-text" style={{ marginBottom: 20 }}>{t("proj.cta")}</p>
-                    <a href="https://github.com/syahroni" target="_blank" rel="noopener noreferrer" className="btn-outline">
+                    <a href={site.socials.github} target="_blank" rel="noopener noreferrer" className="btn-outline">
                         {t("proj.github.btn")}
                     </a>
                 </motion.div>
