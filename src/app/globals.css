@@ -1,12 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
-
 @import "tailwindcss";
 
-/* ===========================
+/* Fonts are loaded via <link> in the root layout (next.js <head>) instead of
+   a render-blocking CSS @import, with preconnect for faster fetch. */
+
+/* ===========================================================================
+   DESIGN TOKENS — single source of truth for color/elevation/shape.
+   Components should reference these variables, not raw hex/rgba literals.
+   (Migrating the remaining inline literals to tokens is a Phase 1 task.)
+   ===========================================================================
    DARK MODE (default)
    =========================== */
 :root,
 [data-theme="dark"] {
+  /* Surfaces */
   --bg:            #030712;
   --bg2:           #050b18;
   --navy:          #0a1628;
@@ -14,13 +20,23 @@
   --surface-hover: rgba(10, 22, 40, 0.92);
   --border:        rgba(0, 212, 255, 0.12);
   --border-hover:  rgba(0, 212, 255, 0.32);
+
+  /* Text */
   --text-primary:  #e8f0ff;
-  --text-secondary:rgba(220, 235, 255, 0.62);
-  --text-muted:    rgba(180, 210, 255, 0.35);
+  --text-secondary:rgba(220, 235, 255, 0.72); /* raised from .62 for AA contrast */
+  --text-muted:    rgba(190, 215, 255, 0.55); /* raised from .35 (failed WCAG AA) */
+
+  /* Accents */
   --cyan:          #00d4ff;
   --purple:        #7b2dff;
   --pink:          #ff2d7b;
+  --accent:        var(--cyan); /* semantic alias: the primary signal color */
+
+  /* Elevation & shape */
   --card-shadow:   0 8px 40px rgba(0, 0, 0, 0.5);
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     14px;
 }
 
 /* ===========================
@@ -37,11 +53,12 @@
   --border:        rgba(56, 189, 248, 0.16);
   --border-hover:  rgba(56, 189, 248, 0.40);
   --text-primary:  #cde6ff;
-  --text-secondary:rgba(180, 215, 255, 0.72);
-  --text-muted:    rgba(120, 175, 230, 0.42);
+  --text-secondary:rgba(190, 220, 255, 0.78);
+  --text-muted:    rgba(150, 195, 240, 0.60); /* raised for AA contrast */
   --cyan:          #38bdf8;
   --purple:        #a78bfa;
   --pink:          #f472b6;
+  --accent:        var(--cyan);
   --card-shadow:   0 8px 40px rgba(0, 0, 0, 0.65);
 }
 
