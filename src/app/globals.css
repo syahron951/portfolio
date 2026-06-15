@@ -153,8 +153,18 @@ body {
   letter-spacing: 0.06em; color: var(--text-faint);
 }
 
-.instrument-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 22px 24px; }
-.instrument-cat { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.instrument-card {
+  background: var(--bg-elev); border: 1px solid var(--line);
+  border-radius: var(--radius-md); padding: 24px 26px; height: 100%;
+  transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+}
+.instrument-card:hover { border-color: var(--accent-line); transform: translateY(-3px); background: var(--bg-elev-2); }
+.instrument-cat {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+}
+.instrument-cat::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
 .meta-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px; }
 
 /* ===========================
