@@ -4,9 +4,11 @@ Personal portfolio. Built with Next.js (App Router), React, TypeScript, Tailwind
 
 This repository is being rebuilt per the strategy/production documents in the
 project root (`ODYSSEY_VISION.md`, `ODYSSEY_PRODUCTION_BIBLE.md`, etc.).
-**Current stage: Phase 1 — The Briefing (MVP), shipped.** It is a single-scroll,
-server-rendered, dark, English-only narrative. The cinematic V2/V3 layers
-(scroll-driven scenes, parallax, sound, i18n, 3D) are intentionally not built.
+**Current stage: Phase 2 — The Voyage.** A single-scroll, server-rendered, dark,
+English-only narrative structured as six cinematic chapters (Ignition → Escape
+Velocity → Instruments → Charted Lights → The Frontier → The Constellation) with
+a progress rail, scroll-linked parallax/atmosphere, and scene transitions — all
+in 2D/CSS. V3 (3D/WebGL/shaders/sound/i18n) is intentionally not built.
 
 ## Getting started
 

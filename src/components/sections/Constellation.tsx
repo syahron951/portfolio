@@ -32,20 +32,25 @@ export default function Constellation() {
             </Reveal>
 
             <Reveal delay={0.18}>
-                <ul className="constellation" aria-label="Social channels">
-                    {CHANNELS.map((c) => (
-                        <li key={c.label}>
-                            <a href={c.href} target="_blank" rel="noopener noreferrer" className="node">
-                                <span className="node-dot" aria-hidden="true" />
-                                <span className="node-label">{c.label} ↗</span>
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <div className="constellation-wrap">
+                    <span aria-hidden="true" className="constellation-line" />
+                    <ul className="constellation" aria-label="Social channels">
+                        {CHANNELS.map((c) => (
+                            <li key={c.label}>
+                                <a href={c.href} target="_blank" rel="noopener noreferrer" className="node">
+                                    <span className="node-dot" aria-hidden="true" />
+                                    <span className="node-label">{c.label} ↗</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </Reveal>
 
             <style>{`
-                .constellation { list-style: none; display: flex; flex-wrap: wrap; gap: 14px; margin: 0; }
+                .constellation-wrap { position: relative; display: inline-block; }
+                .constellation-line { position: absolute; top: 50%; left: 6%; right: 6%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-line), transparent); z-index: 0; }
+                .constellation { position: relative; z-index: 1; list-style: none; display: flex; flex-wrap: wrap; gap: 14px; margin: 0; }
                 .node { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--bg-elev); transition: border-color .18s ease, transform .18s ease; }
                 .node:hover { border-color: var(--accent-line); transform: translateY(-2px); }
                 .node-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }

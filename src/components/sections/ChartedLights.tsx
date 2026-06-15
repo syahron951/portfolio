@@ -18,6 +18,7 @@ export default function ChartedLights() {
         <Chapter id="charted-lights" roman="IV" name="Charted Lights" tone="bright">
             {/* The world the voyage arrives at — drifts slightly as you approach */}
             <Parallax className="world-glow" from={80} to={-80} />
+            <Parallax className="world-ring" from={120} to={-120} />
 
             <Reveal delay={0.05}>
                 <p className="world-tag">Charted World 01</p>
@@ -98,6 +99,13 @@ export default function ChartedLights() {
                     background: radial-gradient(circle, rgba(232,182,90,0.16) 0%, rgba(232,182,90,0.05) 38%, transparent 68%);
                     pointer-events: none; z-index: 0;
                 }
+                .world-ring {
+                    position: absolute; top: 30px; right: -40px;
+                    width: 300px; height: 300px; border-radius: 50%;
+                    border: 1px solid var(--accent-line); opacity: 0.35;
+                    pointer-events: none; z-index: 0;
+                }
+                @media (max-width: 760px){ .world-ring { display: none; } }
                 .world-tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); }
                 .spark-dot-sm { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); flex-shrink: 0; }
                 .status-line { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
