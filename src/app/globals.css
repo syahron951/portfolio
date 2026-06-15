@@ -65,6 +65,23 @@ body {
 }
 
 /* ===========================
+   REVEAL — CSS-only entrance.
+   Visible by default; animation is pure enhancement (fill-mode: both always
+   ends at opacity:1). No JS / IntersectionObserver dependency, so content can
+   never be left invisible.
+   =========================== */
+.reveal {
+  animation: reveal-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; opacity: 1; transform: none; }
+}
+
+/* ===========================
    LAYOUT
    =========================== */
 .container {

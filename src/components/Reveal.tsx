@@ -1,17 +1,21 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 
 /**
- * The single, restrained entrance animation for The Briefing.
- * Opacity + a small rise, once, on scroll-in. Fully disabled when the user
- * prefers reduced motion (renders a plain, static element).
+ * Entrance animation wrapper — robust by design.
+ *
+ * Content is VISIBLE BY DEFAULT. The fade-up is a pure-CSS enhancement
+ * (see `.reveal` in globals.css) that uses `animation-fill-mode: both`, so it
+ * always ends at opacity:1 — and never depends on JS, hydration, or an
+ * IntersectionObserver to make content appear. Under prefers-reduced-motion the
+ * animation is neutralized and content simply shows.
+ *
+ * (Replaces the prior Framer `whileInView` version, which baked opacity:0 into
+ * SSR and left all content invisible when the client reveal didn't fire.)
  */
 export default function Reveal({
     children,
     delay = 0,
-    as = "div",
+    as: Tag = "div",
     className,
 }: {
     children: ReactNode;
@@ -19,23 +23,10 @@ export default function Reveal({
     as?: "div" | "span" | "li";
     className?: string;
 }) {
-    const reduce = useReducedMotion();
-    const MotionTag = motion[as];
-
-    if (reduce) {
-        const Tag = as;
-        return <Tag className={className}>{children}</Tag>;
-    }
-
+    const style: CSSProperties | undefined = delay ? { animationDelay: `${delay}s` } : undefined;
     return (
-        <MotionTag
-            className={className}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <Tag className={`reveal${className ? ` ${className}` : ""}`} style={style}>
             {children}
-        </MotionTag>
+        </Tag>
     );
 }
