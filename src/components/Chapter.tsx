@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
 
 type Tone = "spark" | "warm" | "steady" | "bright" | "dark" | "network";
 
@@ -35,7 +36,7 @@ export default function Chapter({
             aria-label={`Chapter ${roman}: ${name}`}
             style={full ? { minHeight: "100svh", display: "flex", alignItems: "center" } : undefined}
         >
-            <div aria-hidden="true" className={`chapter-atmos chapter-atmos--${tone}`} />
+            <Parallax className={`chapter-atmos chapter-atmos--${tone}`} from={50} to={-50} />
 
             <Container>
                 <Reveal>

@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Chapter from "@/components/Chapter";
+import Parallax from "@/components/Parallax";
 
 // Chapter IV — Charted Lights. Lumero, the first discovered world.
 // All content owner-provided and verifiable. No fabricated metrics or stack.
@@ -15,8 +16,8 @@ const ROLE = [
 export default function ChartedLights() {
     return (
         <Chapter id="charted-lights" roman="IV" name="Charted Lights" tone="bright">
-            {/* The world the voyage arrives at */}
-            <div aria-hidden="true" className="world-glow" />
+            {/* The world the voyage arrives at — drifts slightly as you approach */}
+            <Parallax className="world-glow" from={80} to={-80} />
 
             <Reveal delay={0.05}>
                 <p className="world-tag">Charted World 01</p>

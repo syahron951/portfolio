@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import Parallax from "@/components/Parallax";
 import { site } from "@/config/site";
 
 // Chapter I — Ignition. The spark in the dark; the voyage begins.
@@ -13,7 +14,7 @@ export default function Ignition() {
             style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: 110 }}
         >
             <div aria-hidden="true" className="spark" />
-            <div aria-hidden="true" className="chapter-atmos chapter-atmos--spark" />
+            <Parallax className="chapter-atmos chapter-atmos--spark" from={30} to={-30} />
 
             <Container>
                 <Reveal>

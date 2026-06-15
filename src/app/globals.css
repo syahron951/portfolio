@@ -108,9 +108,19 @@ body {
 }
 .chapter > .container { position: relative; z-index: 1; }
 
-/* Tone-based atmosphere — the light→dark→light arc, pure CSS depth */
+/* Scene transition — a faint glowing 'horizon' where one chapter hands to the
+   next (the carried light motif). Skipped on the first chapter. */
+.chapter + .chapter::before {
+  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: min(680px, 70%); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+  opacity: 0.6; z-index: 1;
+}
+
+/* Tone-based atmosphere — the light→dark→light arc, pure CSS depth.
+   Extends beyond the chapter so parallax translation never reveals an edge. */
 .chapter-atmos {
-  position: absolute; inset: 0;
+  position: absolute; top: -90px; bottom: -90px; left: 0; right: 0;
   pointer-events: none; z-index: 0;
 }
 .chapter-atmos--spark   { background: radial-gradient(120% 80% at 50% 0%, rgba(232,182,90,0.06), transparent 60%); }
@@ -142,6 +152,16 @@ body {
 .instrument-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 22px 24px; }
 .instrument-cat { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
 .meta-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px; }
+
+/* ===========================
+   TOP PROGRESS BAR (journey progress; primary cue on mobile)
+   =========================== */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 2px; transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  z-index: 60; will-change: transform;
+}
 
 /* ===========================
    PROGRESS RAIL (desktop)
