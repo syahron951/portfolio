@@ -1,17 +1,19 @@
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Work from "@/components/sections/Work";
-import Vision from "@/components/sections/Vision";
-import Contact from "@/components/sections/Contact";
+import Ignition from "@/components/sections/Ignition";
+import EscapeVelocity from "@/components/sections/EscapeVelocity";
+import Instruments from "@/components/sections/Instruments";
+import ChartedLights from "@/components/sections/ChartedLights";
+import Frontier from "@/components/sections/Frontier";
+import Constellation from "@/components/sections/Constellation";
 
 export default function HomePage() {
     return (
         <>
-            <Hero />
-            <About />
-            <Work />
-            <Vision />
-            <Contact />
+            <Ignition />
+            <EscapeVelocity />
+            <Instruments />
+            <ChartedLights />
+            <Frontier />
+            <Constellation />
         </>
     );
 }

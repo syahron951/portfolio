@@ -98,6 +98,88 @@ body {
 }
 
 /* ===========================
+   CHAPTERS (the voyage)
+   =========================== */
+.chapter {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(96px, 16vh, 180px);
+  overflow: hidden;
+}
+.chapter > .container { position: relative; z-index: 1; }
+
+/* Tone-based atmosphere — the light→dark→light arc, pure CSS depth */
+.chapter-atmos {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+}
+.chapter-atmos--spark   { background: radial-gradient(120% 80% at 50% 0%, rgba(232,182,90,0.06), transparent 60%); }
+.chapter-atmos--warm    { background: radial-gradient(120% 90% at 20% 0%, rgba(232,182,90,0.05), transparent 58%); }
+.chapter-atmos--steady  { background: radial-gradient(120% 90% at 80% 10%, rgba(150,170,210,0.04), transparent 60%); }
+.chapter-atmos--bright  { background: radial-gradient(120% 90% at 85% 0%, rgba(255,215,154,0.08), transparent 62%); }
+.chapter-atmos--dark    { background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.45)); }
+.chapter-atmos--network { background: radial-gradient(120% 90% at 50% 100%, rgba(232,182,90,0.06), transparent 60%); }
+
+/* Chapter header */
+.chapter-kicker { display: flex; align-items: center; gap: 14px; }
+.chapter-roman {
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.1em; color: var(--accent);
+}
+.chapter-rule { width: 46px; height: 1px; background: var(--accent-line); }
+.chapter-name {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-faint);
+}
+
+/* Hand-off line — narrative continuity into the next chapter */
+.handoff {
+  margin-top: 44px;
+  font-family: var(--font-mono); font-size: 0.78rem;
+  letter-spacing: 0.06em; color: var(--text-faint);
+}
+
+.instrument-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 22px 24px; }
+.instrument-cat { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.meta-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px; }
+
+/* ===========================
+   PROGRESS RAIL (desktop)
+   =========================== */
+.rail { display: none; }
+@media (min-width: 1100px) {
+  .rail {
+    display: block;
+    position: fixed; top: 50%; left: 28px; transform: translateY(-50%);
+    z-index: 40;
+  }
+}
+.rail-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 0; }
+.rail-item {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+.rail-item:hover { opacity: 1; }
+.rail-item.is-active { opacity: 1; }
+.rail-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  background: transparent; border: 1px solid var(--line-strong);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.rail-item.is-active .rail-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.rail-label {
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.06em; color: var(--text-dim);
+  opacity: 0; transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.rail-item:hover .rail-label, .rail-item.is-active .rail-label { opacity: 1; transform: translateX(0); }
+.rail-roman { color: var(--accent); }
+.rail-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+/* ===========================
    TYPOGRAPHY
    =========================== */
 .eyebrow {

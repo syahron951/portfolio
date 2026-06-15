@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { site } from "@/config/site";
+import { chapters } from "@/lib/chapters";
 
-const LINKS = [
-    { href: "#about", label: "About" },
-    { href: "#work", label: "Work" },
-    { href: "#vision", label: "Vision" },
-    { href: "#contact", label: "Contact" },
-];
+// Clear, skimmable labels (the `nav` field) mapped to the cinematic chapters.
+const LINKS = chapters
+    .filter((c) => c.id !== "ignition")
+    .map((c) => ({ href: `#${c.id}`, label: c.nav }));
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -37,7 +36,7 @@ export default function Navbar() {
                 aria-label="Primary"
                 style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 66 }}
             >
-                <a href="#origin" style={{
+                <a href="#ignition" style={{
                     fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1rem",
                     letterSpacing: "0.04em", color: "var(--text)", textDecoration: "none",
                 }}>
