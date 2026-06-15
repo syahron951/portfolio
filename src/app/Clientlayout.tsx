@@ -7,12 +7,12 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <a href="#ignition" className="skip-link">Skip to content</a>
+            <a href="#main" className="skip-link">Skip to content</a>
             <ScrollProgressBar />
             <SpaceBackground />
             <Navbar />
             <ChapterProgress />
-            <main id="main" style={{ position: "relative", zIndex: 1 }}>
+            <main id="main" tabIndex={-1} style={{ position: "relative", zIndex: 1, outline: "none" }}>
                 {children}
             </main>
             <Footer />

@@ -89,8 +89,8 @@ export default function Navbar() {
                     <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 4, margin: 0 }}>
                         {LINKS.map((l) => (
                             <li key={l.href}>
-                                <a href={l.href} onClick={() => setOpen(false)} style={{
-                                    display: "block", padding: "10px 0",
+                                <a href={l.href} onClick={() => setOpen(false)} className="nav-mobile-link" style={{
+                                    display: "flex", alignItems: "center", minHeight: 44, padding: "0 8px",
                                     fontFamily: "var(--font-mono)", fontSize: "0.9rem",
                                     letterSpacing: "0.1em", textTransform: "uppercase",
                                     color: "var(--text-dim)", textDecoration: "none",
@@ -103,7 +103,11 @@ export default function Navbar() {
                 </div>
             )}
 
-            <style>{`@media (min-width: 760px){ .nav-desktop{ display:flex !important; } .nav-toggle{ display:none !important; } }`}</style>
+            <style>{`
+                @media (min-width: 760px){ .nav-desktop{ display:flex !important; } .nav-toggle{ display:none !important; } }
+                .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+                .nav-mobile-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+            `}</style>
         </header>
     );
 }
