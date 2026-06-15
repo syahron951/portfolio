@@ -53,7 +53,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "calt";
 }
+
+::selection { background: var(--accent-soft); color: var(--accent-bright); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -105,6 +108,7 @@ body {
   z-index: 1;
   padding-block: clamp(96px, 16vh, 180px);
   overflow: hidden;
+  scroll-margin-top: 76px; /* anchor jumps clear the fixed navbar */
 }
 .chapter > .container { position: relative; z-index: 1; }
 
@@ -216,24 +220,27 @@ body {
   line-height: 1.02;
   letter-spacing: -0.02em;
   color: var(--text);
+  text-wrap: balance;
 }
 
-h1.display { font-size: clamp(2.6rem, 8vw, 5.5rem); }
-h2.display { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -0.015em; }
+h1.display { font-size: clamp(2.9rem, 9vw, 6rem); line-height: 0.98; letter-spacing: -0.03em; }
+h2.display { font-size: clamp(2.05rem, 5vw, 3.5rem); line-height: 1.04; letter-spacing: -0.02em; }
 h3.display { font-size: clamp(1.3rem, 3vw, 1.9rem); }
 
 .lead {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-size: clamp(1.08rem, 2vw, 1.32rem);
   color: var(--text-dim);
-  line-height: 1.7;
-  max-width: 60ch;
+  line-height: 1.62;
+  max-width: 56ch;
+  text-wrap: pretty;
 }
 
 .body {
-  font-size: 1.02rem;
+  font-size: 1.04rem;
   color: var(--text-dim);
   line-height: 1.75;
-  max-width: 62ch;
+  max-width: 60ch;
+  text-wrap: pretty;
 }
 
 .muted { color: var(--text-faint); }
@@ -243,15 +250,17 @@ h3.display { font-size: clamp(1.3rem, 3vw, 1.9rem); }
    BUTTONS
    =========================== */
 .btn {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 9px;
   padding: 13px 26px;
   font-family: var(--font-mono);
   font-size: 0.78rem; font-weight: 500;
   letter-spacing: 0.08em; text-transform: uppercase;
   border-radius: var(--radius-sm);
   text-decoration: none; cursor: pointer;
-  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1), background 0.18s ease,
+              border-color 0.18s ease, color 0.18s ease, box-shadow 0.22s ease, gap 0.2s ease;
 }
+.btn:hover { gap: 12px; }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .btn-primary {
@@ -259,7 +268,11 @@ h3.display { font-size: clamp(1.3rem, 3vw, 1.9rem); }
   color: #1a1206;
   border: 1px solid var(--accent);
 }
-.btn-primary:hover { background: var(--accent-bright); border-color: var(--accent-bright); transform: translateY(-2px); }
+.btn-primary:hover {
+  background: var(--accent-bright); border-color: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(232,182,90,0.22);
+}
 
 .btn-ghost {
   background: transparent;
