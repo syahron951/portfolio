@@ -25,8 +25,8 @@ export default function ChartedLights() {
             </Reveal>
 
             <Reveal delay={0.08}>
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: 16, marginTop: 6, marginBottom: 8 }}>
-                    <h2 className="display" style={{ marginBottom: 0 }}>Lumero</h2>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: 18, marginTop: 10, marginBottom: 8 }}>
+                    <h2 className="display" style={{ marginBottom: 0, fontSize: "clamp(2.6rem, 6.5vw, 4.4rem)" }}>Lumero</h2>
                     <a href="https://lumero.id" target="_blank" rel="noopener noreferrer" className="link"
                        style={{ fontFamily: "var(--font-mono)", fontSize: "0.85rem" }}>
                         lumero.id ↗
@@ -109,7 +109,14 @@ export default function ChartedLights() {
                 .world-tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); }
                 .spark-dot-sm { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); flex-shrink: 0; }
                 .status-line { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
-                .case-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 26px 28px; height: 100%; }
+                .case-card {
+                    position: relative; background: var(--bg-elev); border: 1px solid var(--line);
+                    border-radius: var(--radius-md); padding: 28px 28px 26px; height: 100%; overflow: hidden;
+                    transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+                }
+                .case-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent 70%); opacity: 0.5; transition: opacity 0.22s ease; }
+                .case-card:hover { border-color: var(--accent-line); transform: translateY(-3px); background: var(--bg-elev-2); }
+                .case-card:hover::before { opacity: 1; }
                 .case-h { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
                 .case-p { color: var(--text-dim); line-height: 1.7; font-size: 0.98rem; }
                 @media (min-width: 880px){ .case-grid{ grid-template-columns: repeat(3, 1fr) !important; } }

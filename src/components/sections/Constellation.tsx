@@ -47,15 +47,26 @@ export default function Constellation() {
                 </div>
             </Reveal>
 
+            {/* The voyage resolves — back to the spark it began with. */}
+            <Reveal delay={0.24}>
+                <div className="closer">
+                    <span className="closer-spark" aria-hidden="true" />
+                    <p className="closer-text">The journey is just beginning.</p>
+                </div>
+            </Reveal>
+
             <style>{`
                 .constellation-wrap { position: relative; display: inline-block; }
                 .constellation-line { position: absolute; top: 50%; left: 6%; right: 6%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-line), transparent); z-index: 0; }
                 .constellation { position: relative; z-index: 1; list-style: none; display: flex; flex-wrap: wrap; gap: 14px; margin: 0; }
                 .node { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--bg-elev); transition: border-color .18s ease, transform .18s ease; }
-                .node:hover { border-color: var(--accent-line); transform: translateY(-2px); }
+                .node:hover { border-color: var(--accent-line); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,182,90,0.12); }
                 .node-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
                 .node-label { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); }
                 .node:hover .node-label { color: var(--accent); }
+                .closer { display: flex; align-items: center; gap: 14px; margin-top: 64px; padding-top: 30px; border-top: 1px solid var(--line); }
+                .closer-spark { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(232,182,90,0.4); flex-shrink: 0; }
+                .closer-text { font-family: var(--font-display); font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--text); letter-spacing: -0.01em; }
             `}</style>
         </Chapter>
     );

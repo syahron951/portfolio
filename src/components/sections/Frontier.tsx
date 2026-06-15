@@ -26,9 +26,9 @@ export default function Frontier() {
 
             <Reveal delay={0.16}>
                 <ul className="legend">
-                    <li><span className="legend-key legend-light" /> Light — what I&apos;ve built</li>
-                    <li><span className="legend-key legend-dark" /> Dark — what&apos;s still ahead</li>
-                    <li><span className="legend-key legend-frontier" /> The frontier — possibility</li>
+                    <li><span className="legend-key legend-light" /> <b>Light</b> — what I&apos;ve built</li>
+                    <li><span className="legend-key legend-dark" /> <b>Dark</b> — what&apos;s still ahead</li>
+                    <li><span className="legend-key legend-frontier" /> <b>The frontier</b> — possibility</li>
                 </ul>
             </Reveal>
 
@@ -44,9 +44,10 @@ export default function Frontier() {
                 .fp-5{ top:54%; left:94%; opacity:.12; animation-delay:3.1s; } .fp-6{ top:14%; left:68%; opacity:.12; animation-delay:2.6s; }
                 @keyframes fp-twinkle { 0%,100%{ opacity:.08; } 50%{ opacity:.34; } }
                 @media (prefers-reduced-motion: reduce){ .frontier-point { animation: none; } }
-                .legend { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); }
-                .legend li { display: flex; align-items: center; gap: 12px; }
-                .legend-key { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+                .legend { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 32px; margin: 0; padding: 20px 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(14,16,22,0.5); font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); }
+                .legend li { display: flex; align-items: center; gap: 11px; }
+                .legend b { color: var(--text); font-weight: 500; }
+                .legend-key { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
                 .legend-light { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
                 .legend-dark { background: transparent; border: 1px solid var(--line-strong); }
                 .legend-frontier { background: var(--accent-soft); border: 1px solid var(--accent-line); }
