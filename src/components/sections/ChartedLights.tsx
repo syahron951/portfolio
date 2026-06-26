@@ -15,7 +15,7 @@ const ROLE = [
 
 export default function ChartedLights() {
     return (
-        <Chapter id="charted-lights" roman="IV" name="Charted Lights" tone="bright">
+        <Chapter id="charted-lights" roman="IV" name="Charted Lights">
             {/* The world the voyage arrives at — drifts slightly as you approach */}
             <Parallax className="world-glow" from={80} to={-80} />
             <Parallax className="world-ring" from={120} to={-120} />

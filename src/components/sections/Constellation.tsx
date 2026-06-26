@@ -11,7 +11,7 @@ const CHANNELS = [
 
 export default function Constellation() {
     return (
-        <Chapter id="constellation" roman="VI" name="The Constellation" tone="network">
+        <Chapter id="constellation" roman="VI" name="The Constellation">
             <Reveal delay={0.05}>
                 <h2 className="display" style={{ marginTop: 26, marginBottom: 22, maxWidth: "16ch" }}>
                     Let&apos;s build something.

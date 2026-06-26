@@ -1,4 +1,4 @@
-import SpaceBackground from "@/components/SpaceBackground";
+import VoyageBackground from "@/components/three/VoyageBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChapterProgress from "@/components/ChapterProgress";
@@ -9,10 +9,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         <>
             <a href="#main" className="skip-link">Skip to content</a>
             <ScrollProgressBar />
-            <SpaceBackground />
+            <VoyageBackground />
             <Navbar />
             <ChapterProgress />
-            <main id="main" tabIndex={-1} style={{ position: "relative", zIndex: 1, outline: "none" }}>
+            <main id="main" tabIndex={-1} style={{ position: "relative", zIndex: 2, outline: "none" }}>
                 {children}
             </main>
             <Footer />

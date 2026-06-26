@@ -5,7 +5,7 @@ import { site } from "@/config/site";
 // Chapter II — Escape Velocity. Leaving the origin; the becoming.
 export default function EscapeVelocity() {
     return (
-        <Chapter id="escape-velocity" roman="II" name="Escape Velocity" tone="warm">
+        <Chapter id="escape-velocity" roman="II" name="Escape Velocity">
             <div className="ascent">
                 <Reveal delay={0.05}>
                     <h2 className="display" style={{ marginTop: 26, marginBottom: 26, maxWidth: "18ch" }}>

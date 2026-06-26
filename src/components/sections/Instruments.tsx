@@ -17,7 +17,7 @@ const META = [
 
 export default function Instruments() {
     return (
-        <Chapter id="instruments" roman="III" name="Instruments" tone="steady">
+        <Chapter id="instruments" roman="III" name="Instruments">
             <Reveal delay={0.05}>
                 <h2 className="display" style={{ marginTop: 26, marginBottom: 22, maxWidth: "18ch" }}>
                     The instruments aboard the craft.
