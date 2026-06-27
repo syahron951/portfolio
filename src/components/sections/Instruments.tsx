@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Chapter from "@/components/Chapter";
+import TiltCard from "@/components/TiltCard";
 
 // Chapter III — Instruments. The craft that powers the voyage.
 // Technology names only — no fabricated proficiency levels.
@@ -17,7 +18,7 @@ const META = [
 
 export default function Instruments() {
     return (
-        <Chapter id="instruments" roman="III" name="Instruments" tone="steady">
+        <Chapter id="instruments" roman="III" name="Instruments">
             <Reveal delay={0.05}>
                 <h2 className="display" style={{ marginTop: 26, marginBottom: 22, maxWidth: "18ch" }}>
                     The instruments aboard the craft.
@@ -33,12 +34,12 @@ export default function Instruments() {
             <div className="instruments-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: 22 }}>
                 {Object.entries(skills).map(([cat, items], i) => (
                     <Reveal key={cat} delay={0.06 + i * 0.05}>
-                        <div className="instrument-card">
+                        <TiltCard className="instrument-card">
                             <div className="instrument-cat">{cat}</div>
                             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                                 {items.map((s) => <span key={s} className="tag">{s}</span>)}
                             </div>
-                        </div>
+                        </TiltCard>
                     </Reveal>
                 ))}
             </div>

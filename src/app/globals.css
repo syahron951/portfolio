@@ -112,28 +112,6 @@ body {
 }
 .chapter > .container { position: relative; z-index: 1; }
 
-/* Scene transition — a faint glowing 'horizon' where one chapter hands to the
-   next (the carried light motif). Skipped on the first chapter. */
-.chapter + .chapter::before {
-  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: min(680px, 70%); height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
-  opacity: 0.6; z-index: 1;
-}
-
-/* Tone-based atmosphere — the light→dark→light arc, pure CSS depth.
-   Extends beyond the chapter so parallax translation never reveals an edge. */
-.chapter-atmos {
-  position: absolute; top: -90px; bottom: -90px; left: 0; right: 0;
-  pointer-events: none; z-index: 0;
-}
-.chapter-atmos--spark   { background: radial-gradient(120% 80% at 50% 0%, rgba(232,182,90,0.06), transparent 60%); }
-.chapter-atmos--warm    { background: radial-gradient(120% 90% at 20% 0%, rgba(232,182,90,0.05), transparent 58%); }
-.chapter-atmos--steady  { background: radial-gradient(120% 90% at 80% 10%, rgba(150,170,210,0.04), transparent 60%); }
-.chapter-atmos--bright  { background: radial-gradient(120% 90% at 85% 0%, rgba(255,215,154,0.08), transparent 62%); }
-.chapter-atmos--dark    { background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.45)); }
-.chapter-atmos--network { background: radial-gradient(120% 90% at 50% 100%, rgba(232,182,90,0.06), transparent 60%); }
-
 /* Chapter header */
 .chapter-kicker { display: flex; align-items: center; gap: 14px; }
 .chapter-roman {
@@ -325,15 +303,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
   font-family: var(--font-mono); font-size: 0.8rem;
 }
 .skip-link:focus { left: 0; }
-
-/* ===========================
-   CANVAS BACKGROUND
-   =========================== */
-#star-canvas {
-  position: fixed; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 0; pointer-events: none;
-}
 
 /* ===========================
    SCROLLBAR

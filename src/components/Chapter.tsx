@@ -1,30 +1,24 @@
 import type { ReactNode } from "react";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
-import Parallax from "@/components/Parallax";
-
-type Tone = "spark" | "warm" | "steady" | "bright" | "dark" | "network";
 
 /**
- * Chapter shell for the voyage. Renders a full-height scene with a numbered
- * header, a tone-based CSS atmosphere layer, and the chapter body.
+ * Chapter shell for the voyage. Renders a numbered header (roman + name) and
+ * the chapter body. The atmospheric background is the shared WebGL star-voyage
+ * (see VoyageBackground); chapters themselves are transparent so it shows through.
  *
- * Server component — content is SSR'd and visible by default. (Scroll-linked
- * parallax is layered on in Milestone 2 via a separate client wrapper, never
- * gating content visibility.)
+ * Server component — content is SSR'd and visible by default.
  */
 export default function Chapter({
     id,
     roman,
     name,
-    tone = "steady",
     children,
     full = false,
 }: {
     id: string;
     roman: string;
     name: string;
-    tone?: Tone;
     children: ReactNode;
     full?: boolean;
 }) {
@@ -32,12 +26,10 @@ export default function Chapter({
         <section
             id={id}
             data-chapter={id}
-            className={`chapter chapter--${tone}`}
+            className="chapter"
             aria-label={`Chapter ${roman}: ${name}`}
             style={full ? { minHeight: "100svh", display: "flex", alignItems: "center" } : undefined}
         >
-            <Parallax className={`chapter-atmos chapter-atmos--${tone}`} from={50} to={-50} />
-
             <Container>
                 <Reveal>
                     <p className="chapter-kicker">

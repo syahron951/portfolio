@@ -1,112 +1,38 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { site } from "@/config/site";
-import { chapters } from "@/lib/chapters";
 
-// Clear, skimmable labels (the `nav` field) mapped to the cinematic chapters.
-const LINKS = chapters
-    .filter((c) => c.id !== "ignition")
-    .map((c) => ({ href: `#${c.id}`, label: c.nav }));
-
+// Matches the design: "S" badge wordmark, three chapter links (hidden on small
+// screens — the experience is a single scroll), and a Contact button.
+// Server component: anchor links + CSS hover, no client JS.
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 16);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
-
     return (
-        <header
-            style={{
-                position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-                background: scrolled ? "rgba(8,9,13,0.82)" : "transparent",
-                backdropFilter: scrolled ? "blur(14px)" : "none",
-                WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-                borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
-                transition: "background 0.3s ease, border-color 0.3s ease",
-            }}
-        >
-            <nav
-                className="container"
-                aria-label="Primary"
-                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 66 }}
-            >
-                <a href="#ignition" style={{
-                    fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1rem",
-                    letterSpacing: "0.04em", color: "var(--text)", textDecoration: "none",
-                }}>
-                    {site.shortName}<span style={{ color: "var(--accent)" }}>.</span>
+        <header className="nav-header">
+            <nav className="container" aria-label="Primary" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 66 }}>
+                <a href="#ignition" style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
+                    <span className="nav-badge" aria-hidden="true">S</span>
+                    <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--text-dim)" }}>
+                        {site.shortName}
+                    </span>
                 </a>
 
-                {/* Desktop */}
-                <ul className="nav-desktop" style={{ display: "none", listStyle: "none", alignItems: "center", gap: 30, margin: 0 }}>
-                    {LINKS.map((l) => (
-                        <li key={l.href}>
-                            <a href={l.href} style={{
-                                fontFamily: "var(--font-mono)", fontSize: "0.74rem",
-                                letterSpacing: "0.12em", textTransform: "uppercase",
-                                color: "var(--text-dim)", textDecoration: "none",
-                                transition: "color 0.18s ease",
-                            }}
-                               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-                               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-dim)")}>
-                                {l.label}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-
-                {/* Mobile toggle */}
-                <button
-                    className="nav-toggle"
-                    aria-label={open ? "Close menu" : "Open menu"}
-                    aria-expanded={open}
-                    onClick={() => setOpen((v) => !v)}
-                    style={{
-                        display: "flex", flexDirection: "column", gap: 5, padding: 8,
-                        background: "none", border: "none", cursor: "pointer",
-                    }}
-                >
-                    {[0, 1, 2].map((i) => (
-                        <span key={i} style={{
-                            display: "block", width: 22, height: 1.5, background: "var(--text)",
-                            transition: "transform 0.2s ease, opacity 0.2s ease",
-                            transform: open ? (i === 0 ? "translateY(6.5px) rotate(45deg)" : i === 2 ? "translateY(-6.5px) rotate(-45deg)" : "none") : "none",
-                            opacity: open && i === 1 ? 0 : 1,
-                        }} />
-                    ))}
-                </button>
+                <div style={{ display: "flex", alignItems: "center", gap: 26 }}>
+                    <div className="nav-links" style={{ display: "none", alignItems: "center", gap: 24 }}>
+                        <a className="nav-link" href="#instruments">Craft</a>
+                        <a className="nav-link" href="#charted-lights">Work</a>
+                        <a className="nav-link" href="#frontier">Vision</a>
+                    </div>
+                    <a className="nav-contact" href="#constellation">Contact</a>
+                </div>
             </nav>
 
-            {/* Mobile menu */}
-            {open && (
-                <div className="container" style={{ paddingBottom: 20, paddingTop: 4 }}>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 4, margin: 0 }}>
-                        {LINKS.map((l) => (
-                            <li key={l.href}>
-                                <a href={l.href} onClick={() => setOpen(false)} className="nav-mobile-link" style={{
-                                    display: "flex", alignItems: "center", minHeight: 44, padding: "0 8px",
-                                    fontFamily: "var(--font-mono)", fontSize: "0.9rem",
-                                    letterSpacing: "0.1em", textTransform: "uppercase",
-                                    color: "var(--text-dim)", textDecoration: "none",
-                                }}>
-                                    {l.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-
             <style>{`
-                @media (min-width: 760px){ .nav-desktop{ display:flex !important; } .nav-toggle{ display:none !important; } }
-                .nav-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-                .nav-mobile-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+                .nav-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(8,9,13,0.7), transparent); }
+                .nav-badge { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--accent-line); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; color: var(--accent); font-size: 15px; box-shadow: 0 0 18px rgba(232,182,90,0.25) inset; }
+                .nav-link { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint); text-decoration: none; transition: color .2s; }
+                .nav-link:hover { color: var(--accent); }
+                .nav-contact { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1206; background: var(--accent); padding: 9px 16px; border-radius: 7px; text-decoration: none; font-weight: 500; transition: background .2s; }
+                .nav-contact:hover { background: var(--accent-bright); }
+                .nav-link:focus-visible, .nav-contact:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+                @media (min-width: 760px){ .nav-links { display: flex !important; } }
             `}</style>
         </header>
     );

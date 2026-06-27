@@ -1,21 +1,17 @@
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
-import Parallax from "@/components/Parallax";
 import { site } from "@/config/site";
 
-// Chapter I — Ignition. The spark in the dark; the voyage begins.
+// Chapter I — Ignition. The voyage begins (background is the WebGL star-voyage).
 export default function Ignition() {
     return (
         <section
             id="ignition"
             data-chapter="ignition"
-            className="chapter chapter--spark"
+            className="chapter"
             aria-label="Chapter I: Ignition"
             style={{ minHeight: "100svh", display: "flex", alignItems: "center", paddingTop: 110 }}
         >
-            <div aria-hidden="true" className="spark" />
-            <Parallax className="chapter-atmos chapter-atmos--spark" from={30} to={-30} />
-
             <Container>
                 <Reveal>
                     <div className="ignition-top">
@@ -58,27 +54,19 @@ export default function Ignition() {
             </Container>
 
             <div aria-hidden="true" className="scroll-cue">
-                <span>Begin the voyage</span>
+                <span>Scroll to launch</span>
                 <span className="scroll-line" />
             </div>
 
             <style>{`
-                .spark {
-                    position: absolute; top: 16%; left: 50%;
-                    width: 480px; height: 480px; transform: translate(-50%, -50%);
-                    background: radial-gradient(circle, rgba(232,182,90,0.18) 0%, rgba(232,182,90,0.06) 36%, transparent 70%);
-                    pointer-events: none; z-index: 0;
-                    animation: spark-breathe 6s ease-in-out infinite;
-                }
                 .spark-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: spark-blink 2.4s ease-in-out infinite; flex-shrink: 0; }
                 .ignition-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
                 .status { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
                 .scroll-cue { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--text-faint); }
                 .scroll-line { width: 1px; height: 34px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scroll-drift 1.9s ease-in-out infinite; }
-                @keyframes spark-breathe { 0%,100%{opacity:.7; transform:translate(-50%,-50%) scale(1);} 50%{opacity:1; transform:translate(-50%,-50%) scale(1.08);} }
                 @keyframes spark-blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
                 @keyframes scroll-drift { 0%{transform:translateY(-7px); opacity:.25;} 50%{opacity:1;} 100%{transform:translateY(7px); opacity:.25;} }
-                @media (prefers-reduced-motion: reduce){ .spark, .spark-dot, .scroll-line { animation: none; } }
+                @media (prefers-reduced-motion: reduce){ .spark-dot, .scroll-line { animation: none; } }
             `}</style>
         </section>
     );

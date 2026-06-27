@@ -4,7 +4,7 @@ import Chapter from "@/components/Chapter";
 // Chapter V — The Frontier. The dark = future; the frontier = possibility.
 export default function Frontier() {
     return (
-        <Chapter id="frontier" roman="V" name="The Frontier" tone="dark">
+        <Chapter id="frontier" roman="V" name="The Frontier">
             {/* faint, not-yet-lit points = futures */}
             <div aria-hidden="true" className="frontier-field">
                 {[...Array(7)].map((_, i) => <span key={i} className={`frontier-point fp-${i}`} />)}
