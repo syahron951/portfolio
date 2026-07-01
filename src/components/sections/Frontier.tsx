@@ -1,15 +1,12 @@
 import Reveal from "@/components/Reveal";
 import Chapter from "@/components/Chapter";
+import FrontierMap from "@/components/FrontierMap";
 
 // Chapter V — The Frontier. The dark = future; the frontier = possibility.
+// The legend is now a functional instrument: three modes driving the star map.
 export default function Frontier() {
     return (
         <Chapter id="frontier" roman="V" name="The Frontier">
-            {/* faint, not-yet-lit points = futures */}
-            <div aria-hidden="true" className="frontier-field">
-                {[...Array(7)].map((_, i) => <span key={i} className={`frontier-point fp-${i}`} />)}
-            </div>
-
             <Reveal delay={0.05}>
                 <h2 className="display" style={{ marginTop: 26, marginBottom: 24, maxWidth: "20ch" }}>
                     One light charted. A whole frontier still dark.
@@ -17,7 +14,7 @@ export default function Frontier() {
             </Reveal>
 
             <Reveal delay={0.1}>
-                <p className="body" style={{ fontSize: "1.12rem", marginBottom: 28 }}>
+                <p className="body" style={{ fontSize: "1.12rem", marginBottom: 30 }}>
                     The dark isn&apos;t empty — it&apos;s everything I haven&apos;t built yet. I want to keep
                     charting it: more ownership, deeper engineering, and eventually starting things of my own.
                     I&apos;m early, and that&apos;s the point — the most interesting work is still ahead.
@@ -25,33 +22,12 @@ export default function Frontier() {
             </Reveal>
 
             <Reveal delay={0.16}>
-                <ul className="legend">
-                    <li><span className="legend-key legend-light" /> <b>Light</b> — what I&apos;ve built</li>
-                    <li><span className="legend-key legend-dark" /> <b>Dark</b> — what&apos;s still ahead</li>
-                    <li><span className="legend-key legend-frontier" /> <b>The frontier</b> — possibility</li>
-                </ul>
+                <FrontierMap />
             </Reveal>
 
             <Reveal delay={0.22}>
                 <p className="handoff">→ The signals I&apos;m reachable on</p>
             </Reveal>
-
-            <style>{`
-                .frontier-field { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-                .frontier-point { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); opacity: 0.25; box-shadow: 0 0 6px var(--accent); animation: fp-twinkle 5s ease-in-out infinite; }
-                .fp-0{ top:22%; left:78%; } .fp-1{ top:40%; left:88%; animation-delay:1.1s; } .fp-2{ top:64%; left:72%; animation-delay:2.3s; }
-                .fp-3{ top:30%; left:62%; opacity:.16; animation-delay:.7s; } .fp-4{ top:74%; left:84%; opacity:.16; animation-delay:1.8s; }
-                .fp-5{ top:54%; left:94%; opacity:.12; animation-delay:3.1s; } .fp-6{ top:14%; left:68%; opacity:.12; animation-delay:2.6s; }
-                @keyframes fp-twinkle { 0%,100%{ opacity:.08; } 50%{ opacity:.34; } }
-                @media (prefers-reduced-motion: reduce){ .frontier-point { animation: none; } }
-                .legend { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 32px; margin: 0; padding: 20px 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(14,16,22,0.5); font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); }
-                .legend li { display: flex; align-items: center; gap: 11px; }
-                .legend b { color: var(--text); font-weight: 500; }
-                .legend-key { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
-                .legend-light { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
-                .legend-dark { background: transparent; border: 1px solid var(--line-strong); }
-                .legend-frontier { background: var(--accent-soft); border: 1px solid var(--accent-line); }
-            `}</style>
         </Chapter>
     );
 }
