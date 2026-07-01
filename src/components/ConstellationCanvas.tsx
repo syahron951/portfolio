@@ -83,6 +83,15 @@ export default function ConstellationCanvas() {
                 g.addColorStop(0, rgba(p.hot ? 0.5 : 0.3)); g.addColorStop(1, rgba(0));
                 ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.hot ? 26 : 16, 0, 6.283); ctx.fill();
             });
+            // broadcasting pulse rings
+            if (!reduce) {
+                P.forEach((p, i) => {
+                    const pu = (t * 0.4 + i * 0.37) % 1;
+                    ctx.strokeStyle = rgba((1 - pu) * 0.28);
+                    ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, 10 + pu * 42, 0, 6.283); ctx.stroke();
+                });
+            }
         };
 
         const onMove = (e: PointerEvent) => { const r = wrap.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = true; };
